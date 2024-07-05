@@ -1,0 +1,55 @@
+Loading intel-20.4/compilers
+  Loading requirement: intel-license gcc/10.2.0 intel-20.4/cc intel-20.4/fc
+Scale Factor = 8, iterations = 100000
+Irrotational flow
+Running CFD on 256 x 256 grid using 4 process(es) 
+
+Starting main loop...
+
+MPT ERROR: Assertion failed at req.h:347: "0 <= ref_count"
+MPT ERROR: Rank 3(g:3) is aborting with error code 0.
+	Process ID: 3547617, Host: r1i1n11, Program: /mnt/lustre/e1000/home/tc063/tc063/nkb20/cfd-2024/hpcss24-cfd/C-MPI/cfd
+	MPT Version: HPE MPT 2.25  08/14/21 03:17:46-root
+
+MPT: --------stack traceback-------
+MPT: Attaching to program: /proc/3547617/exe, process 3547617
+MPT: [Thread debugging using libthread_db enabled]
+MPT: Using host libthread_db library "/lib64/libthread_db.so.1".
+MPT: (no debugging symbols found)...done.
+MPT: (no debugging symbols found)...done.
+MPT: (no debugging symbols found)...done.
+MPT: (no debugging symbols found)...done.
+MPT: (no debugging symbols found)...done.
+MPT: 0x000014ba79246468 in waitpid () from /lib64/libpthread.so.0
+MPT: Missing separate debuginfos, use: yum debuginfo-install glibc-2.28-151.el8.x86_64 libibverbs-41mlnx1-OFED.4.9.3.0.0.49710.x86_64 libmlx5-41mlnx1-OFED.4.9.0.1.2.49710.x86_64 libnl3-3.5.0-1.el8.x86_64 numactl-libs-2.0.12-11.el8.x86_64
+MPT: (gdb) #0  0x000014ba79246468 in waitpid () from /lib64/libpthread.so.0
+MPT: #1  0x000014ba78f2fd96 in MPI_SGI_stacktraceback ()
+MPT:    from /opt/hpe/hpc/mpt/mpt-2.25/lib/libmpi.so
+MPT: #2  0x000014ba78e5d506 in print_traceback ()
+MPT:    from /opt/hpe/hpc/mpt/mpt-2.25/lib/libmpi.so
+MPT: #3  0x000014ba78e5d8b2 in MPI_SGI_abort ()
+MPT:    from /opt/hpe/hpc/mpt/mpt-2.25/lib/libmpi.so
+MPT: #4  0x000014ba78e639fa in MPI_SGI_assert_fail ()
+MPT:    from /opt/hpe/hpc/mpt/mpt-2.25/lib/libmpi.so
+MPT: #5  0x000014ba78e59468 in MPI_SGI_request_test ()
+MPT:    from /opt/hpe/hpc/mpt/mpt-2.25/lib/libmpi.so
+MPT: #6  0x000014ba78e59b29 in MPI_SGI_request_wait ()
+MPT:    from /opt/hpe/hpc/mpt/mpt-2.25/lib/libmpi.so
+MPT: #7  0x000014ba78f4d7b3 in PMPI_Wait ()
+MPT:    from /opt/hpe/hpc/mpt/mpt-2.25/lib/libmpi.so
+MPT: #8  0x00000000004021e9 in haloswap ()
+MPT: #9  0x0000000000402ec9 in main ()
+MPT: (gdb) A debugging session is active.
+MPT: 
+MPT: 	Inferior 1 [process 3547617] will be detached.
+MPT: 
+MPT: Quit anyway? (y or n) [answered Y; input not from terminal]
+MPT: Detaching from program: /proc/3547617/exe, process 3547617
+MPT: [Inferior 1 (process 3547617) detached]
+
+MPT: -----stack traceback ends-----
+slurmstepd: error: *** STEP 5788623.0 ON r1i1n11 CANCELLED AT 2024-07-05T14:20:39 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: r1i1n11: tasks 0-2: Killed
+srun: launch/slurm: _step_signal: Terminating StepId=5788623.0
+srun: error: r1i1n11: task 3: Exited with exit code 255
